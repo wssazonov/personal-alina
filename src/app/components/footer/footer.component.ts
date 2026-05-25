@@ -8,8 +8,6 @@ import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/c
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
-    private readonly currentYear = signal(new Date().getFullYear());
-    protected readonly copyright = computed(
-        () => `© Алина ${this.currentYear()}`,
-    );
+    private readonly brand = signal('© Алина');
+    protected readonly copyright = computed(() => this.brand());
 }

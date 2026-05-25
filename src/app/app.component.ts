@@ -8,7 +8,6 @@ import { FormatComponent } from './components/format/format.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { FloatingContactsComponent } from './shared/components/floating-contacts/floating-contacts.component';
 
 @Component({
     selector: 'app-root',
@@ -23,7 +22,6 @@ import { FloatingContactsComponent } from './shared/components/floating-contacts
         ReviewsComponent,
         ContactsComponent,
         FooterComponent,
-        FloatingContactsComponent,
     ],
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',

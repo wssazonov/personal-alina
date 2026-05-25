@@ -23,8 +23,11 @@
         <ul class="hero__metrics">
             @for (item of metrics(); track item.id) {
                 <li>
-                    <strong>{{ item.title }}</strong>
-                    <span>{{ item.subtitle }}</span>
+                    <span class="hero__metric-icon" aria-hidden="true"></span>
+                    <div>
+                        <strong>{{ item.title }}</strong>
+                        <span>{{ item.subtitle }}</span>
+                    </div>
                 </li>
             }
         </ul>
@@ -32,17 +35,16 @@
 
     <div class="hero__visual">
         <img
+            class="hero__brain"
+            src="assets/images/brain-logo.png"
+            alt=""
+            aria-hidden="true"
+        />
+        <img
             class="hero__photo"
             src="assets/images/alina-hero.jpg"
             alt="Алина с iPad"
             loading="eager"
-            decoding="async"
-        />
-        <img
-            class="hero__logo"
-            src="assets/images/brain-logo.png"
-            alt="Логотип Алины"
-            loading="lazy"
             decoding="async"
         />
     </div>

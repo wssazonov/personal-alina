@@ -1,24 +1,44 @@
 .directions {
-    padding-top: 4.2rem;
+    padding-top: 2.3rem;
 
     &__grid {
-        margin-top: 1.5rem;
+        margin-top: 1.65rem;
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 1rem;
     }
 
+    .card {
+        border: 0;
+        box-shadow: none;
+        padding: 1.4rem 1.5rem;
+    }
+
+    .card:first-child {
+        background: #efe8fb;
+    }
+
+    .card:last-child {
+        background: #f8edeb;
+    }
+
     &__icon {
-        margin-right: 0.5rem;
-        color: var(--accent-strong);
+        display: inline-flex;
+        margin-right: 0.45rem;
+        font-weight: 700;
+        color: #a483e9;
+    }
+
+    .card:last-child &__icon {
+        color: #f08f6f;
     }
 
     h3 {
         margin: 0;
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.4rem;
     }
 
     ul {
@@ -26,13 +46,13 @@
         padding: 0;
         list-style: none;
         display: grid;
-        gap: 0.6rem;
+        gap: 0.58rem;
     }
 
     li {
         position: relative;
-        padding-left: 1.2rem;
-        color: var(--text-secondary);
+        padding-left: 1.08rem;
+        color: #4e4958;
         line-height: 1.5;
 
         &::before {
@@ -40,8 +60,9 @@
             position: absolute;
             left: 0;
             top: 0;
-            color: var(--accent-strong);
+            color: #a483e9;
             font-weight: 700;
+            font-size: 0.86rem;
         }
     }
 }

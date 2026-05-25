@@ -1,9 +1,14 @@
 <section class="format container" appRevealOnScroll>
     <h2 class="section-title">Формат занятий</h2>
     <div class="format__grid">
-        @for (item of formats(); track item.id) {
-            <article class="card card--hoverable">
-                <span class="format__icon">{{ item.icon }}</span>
+        @for (item of formats(); track item.id; let isLast = $last) {
+            <article class="format__item">
+                <div class="format__icon-wrap">
+                    <span class="format__icon">{{ item.icon }}</span>
+                    @if (!isLast) {
+                        <span class="format__line" aria-hidden="true"></span>
+                    }
+                </div>
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.description }}</p>
             </article>

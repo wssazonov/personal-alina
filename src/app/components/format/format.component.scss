@@ -1,28 +1,53 @@
 .format {
-    padding-top: 4.2rem;
+    padding-top: 2.4rem;
 
     &__grid {
-        margin-top: 1.5rem;
+        margin-top: 1.6rem;
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 1rem;
     }
 
+    &__item {
+        text-align: center;
+    }
+
+    &__icon-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     &__icon {
-        color: var(--accent-strong);
-        font-size: 1.65rem;
-        font-weight: 700;
+        width: 3.15rem;
+        height: 3.15rem;
+        border-radius: 50%;
+        border: 1px solid rgba(173, 148, 233, 0.42);
+        display: grid;
+        place-items: center;
+        color: #a483e9;
+        font-size: 1.35rem;
+        background: #f6f2ff;
+    }
+
+    &__line {
+        position: absolute;
+        left: calc(50% + 1.85rem);
+        width: calc(100% - 3.4rem);
+        border-top: 2px dashed rgba(188, 168, 236, 0.52);
     }
 
     h3 {
-        margin: 0.85rem 0 0;
-        font-size: 1.15rem;
+        margin: 0.75rem 0 0;
+        font-size: 1.12rem;
+        line-height: 1.35;
     }
 
     p {
-        margin: 0.6rem 0 0;
-        color: var(--text-secondary);
-        line-height: 1.6;
+        margin: 0.45rem 0 0;
+        color: #4f4a5b;
+        line-height: 1.55;
     }
 }
 
@@ -30,6 +55,11 @@
     .format {
         &__grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
+            row-gap: 1.3rem;
+        }
+
+        &__line {
+            display: none;
         }
     }
 }

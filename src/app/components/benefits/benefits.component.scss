@@ -1,19 +1,29 @@
 .benefits {
-    padding-top: 4.2rem;
+    padding-top: 2.2rem;
 
     &__grid {
-        margin-top: 1.5rem;
+        margin-top: 1.8rem;
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 1rem;
     }
 
+    &__item {
+        box-shadow: none;
+        border: 1px solid rgba(181, 165, 214, 0.3);
+        background: #ffffff;
+        padding: 1.35rem;
+        text-align: center;
+    }
+
     &__icon {
-        color: var(--accent-strong);
-        font-size: 2rem;
-        font-weight: 700;
-        display: inline-block;
+        color: #a483e9;
+        font-size: 2.55rem;
         line-height: 1;
+
+        &--peach {
+            color: #f58f6c;
+        }
     }
 
     h3 {
@@ -22,9 +32,10 @@
     }
 
     p {
-        margin: 0.6rem 0 0;
-        color: var(--text-secondary);
-        line-height: 1.6;
+        margin: 0.7rem 0 0;
+        color: #4f4a5b;
+        line-height: 1.68;
+        font-size: 0.98rem;
     }
 }
 

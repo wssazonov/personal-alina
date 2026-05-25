@@ -1,60 +1,80 @@
 .about {
-    padding-top: 4.2rem;
+    padding-top: 1rem;
 
     &__card {
+        position: relative;
         display: grid;
-        grid-template-columns: minmax(16rem, 23rem) 1fr;
-        gap: 2rem;
-        background: linear-gradient(180deg, #ffffff 0%, #fbf7ff 100%);
-        border-radius: var(--card-radius);
-        padding: 1.6rem;
-        box-shadow: var(--card-shadow);
+        grid-template-columns: minmax(16rem, 25rem) 1fr;
+        gap: 2.2rem;
+        background: linear-gradient(180deg, #f8f5fc 0%, #f4f2f9 100%);
+        border-radius: 2rem;
+        padding: 1.8rem;
+        border: 1px solid rgba(181, 165, 214, 0.25);
+    }
+
+    &__card::before {
+        content: '~';
+        position: absolute;
+        right: 60%;
+        top: 2.4rem;
+        color: #f4b8a2;
+        font-size: 2.4rem;
     }
 
     &__media img {
         width: 100%;
-        border-radius: 1.2rem;
+        border-radius: 1.75rem;
         display: block;
         object-fit: cover;
     }
 
     h2 {
         margin: 0;
-        font-size: clamp(1.75rem, 3vw, 2.45rem);
+        font-size: clamp(2rem, 3vw, 2.9rem);
+        line-height: 1.12;
     }
 
     p {
-        margin: 0.8rem 0 0;
-        color: var(--text-secondary);
-        line-height: 1.65;
+        margin: 0.85rem 0 0;
+        color: #4c4858;
+        line-height: 1.66;
     }
 
     &__metrics {
-        margin: 1.4rem 0 0;
+        margin: 1.45rem 0 0;
         padding: 0;
         list-style: none;
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.8rem;
+        gap: 0.75rem;
 
         li {
-            padding: 0.9rem;
-            border-radius: 1rem;
-            background: #ffffff;
-            border: 1px solid rgba(205, 186, 247, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.75rem 0.85rem;
+            border-radius: 0.9rem;
+            background: #ece6f8;
         }
 
         strong {
             display: block;
-            font-size: 0.97rem;
+            font-size: 0.95rem;
         }
 
         span {
             display: block;
-            margin-top: 0.2rem;
-            color: var(--text-secondary);
+            color: #585368;
             font-size: 0.88rem;
         }
+    }
+
+    &__metric-icon {
+        width: 1.7rem;
+        height: 1.7rem;
+        border-radius: 50%;
+        border: 2px solid #ad8bea;
+        flex-shrink: 0;
     }
 }
 

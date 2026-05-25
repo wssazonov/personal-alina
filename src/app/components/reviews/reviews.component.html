@@ -1,46 +1,28 @@
 <section class="reviews container" appRevealOnScroll>
-    <div class="reviews__head">
-        <h2 class="section-title">Отзывы учеников</h2>
-        @if (reviews().length > 1) {
-            <div class="reviews__controls">
-                <button
-                    class="reviews__arrow"
-                    type="button"
-                    (click)="previous()"
-                >
-                    ←
-                </button>
-                <button class="reviews__arrow" type="button" (click)="next()">
-                    →
-                </button>
-            </div>
+    <h2 class="section-title">Отзывы учеников</h2>
+
+    <div class="reviews__grid">
+        @for (review of reviews(); track review.id) {
+            <article class="reviews__item card card--hoverable">
+                <p>“{{ review.text }}”</p>
+                <div class="reviews__author">
+                    <div>
+                        <strong>— {{ review.author }}, {{ review.grade }}</strong>
+                    </div>
+                    <span class="reviews__avatar">{{ getInitial(review.author) }}</span>
+                </div>
+            </article>
         }
     </div>
 
-    <div class="reviews__viewport" aria-live="polite">
-        <div class="reviews__track" [style.transform]="sliderTransform()">
-            @for (review of reviews(); track review.id) {
-                <article class="reviews__item card">
-                    <p>“{{ review.text }}”</p>
-                    <div class="reviews__author">
-                        <strong>{{ review.author }}</strong>
-                        <span>{{ review.grade }}</span>
-                    </div>
-                </article>
-            }
-        </div>
+    <div class="reviews__dots">
+        @for (dot of [0, 1, 2]; track dot) {
+            <button
+                type="button"
+                [class.is-active]="dot === activeIndex()"
+                (click)="goTo(dot)"
+                [attr.aria-label]="'Перейти к слайду ' + (dot + 1)"
+            ></button>
+        }
     </div>
-
-    @if (reviews().length > 1) {
-        <div class="reviews__dots">
-            @for (review of reviews(); track review.id; let index = $index) {
-                <button
-                    type="button"
-                    [class.is-active]="index === activeIndex()"
-                    (click)="goTo(index)"
-                    [attr.aria-label]="'Перейти к отзыву ' + (index + 1)"
-                ></button>
-            }
-        </div>
-    }
 </section>
