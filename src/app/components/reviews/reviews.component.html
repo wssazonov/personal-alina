@@ -15,14 +15,16 @@
         }
     </div>
 
-    <div class="reviews__dots">
-        @for (dot of [0, 1, 2]; track dot) {
-            <button
-                type="button"
-                [class.is-active]="dot === activeIndex()"
-                (click)="goTo(dot)"
-                [attr.aria-label]="'Перейти к слайду ' + (dot + 1)"
-            ></button>
-        }
-    </div>
+    @if (paginationDots().length > 1) {
+        <div class="reviews__dots">
+            @for (dot of paginationDots(); track dot) {
+                <button
+                    type="button"
+                    [class.is-active]="dot === activeIndex()"
+                    (click)="goTo(dot)"
+                    [attr.aria-label]="'Перейти к слайду ' + (dot + 1)"
+                ></button>
+            }
+        </div>
+    }
 </section>

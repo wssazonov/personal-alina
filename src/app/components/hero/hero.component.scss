@@ -55,16 +55,17 @@
             color: #595465;
             font-size: 0.95rem;
         }
-    }
 
-    &__metric-icon {
-        display: grid;
-        width: 2.15rem;
-        height: 2.15rem;
-        place-items: center;
-        margin-top: 0.1rem;
-        color: #aa8be8;
-        font-size: 2.15rem;
+        .hero__metric-icon {
+            display: grid;
+            width: 2.65rem;
+            height: 2.65rem;
+            place-items: center;
+            margin-top: 0.02rem;
+            color: #a77fe8;
+            font-size: 2.65rem;
+            flex-shrink: 0;
+        }
     }
 
     &__visual {

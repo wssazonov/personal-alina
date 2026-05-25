@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { REVIEWS } from '../../shared/data/reviews.data';
 import type { Review } from '../../shared/models/landing.models';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
@@ -14,6 +14,15 @@ import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scrol
 export class ReviewsComponent {
     protected readonly reviews = signal<readonly Review[]>(REVIEWS);
     protected readonly activeIndex = signal(0);
+    protected readonly paginationDots = computed(() => {
+        const pagesCount = Math.ceil(this.reviews().length / 3);
+
+        if (pagesCount <= 1) {
+            return [];
+        }
+
+        return Array.from({ length: pagesCount }, (_, index) => index);
+    });
 
     protected goTo(index: number): void {
         this.activeIndex.set(index);
