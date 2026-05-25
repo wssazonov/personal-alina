@@ -67,16 +67,16 @@
             color: #585368;
             font-size: 0.88rem;
         }
-    }
 
-    &__metric-icon {
-        display: grid;
-        width: 1.7rem;
-        height: 1.7rem;
-        place-items: center;
-        color: #9f78dc;
-        font-size: 1.7rem;
-        flex-shrink: 0;
+        .about__metric-icon {
+            display: grid;
+            width: 2.7rem;
+            height: 2.7rem;
+            place-items: center;
+            color: #9f78dc;
+            font-size: 2.7rem;
+            flex-shrink: 0;
+        }
     }
 }
 
