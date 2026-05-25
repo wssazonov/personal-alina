@@ -17,13 +17,19 @@
                 rel="noopener noreferrer"
             >
                 Написать в Telegram
+                <app-icon name="send" />
             </a>
-            <a class="button button--ghost" href="#about">Подробнее обо мне</a>
+            <a class="button button--ghost" href="#about">
+                Подробнее обо мне
+                <app-icon name="chevron-down" />
+            </a>
         </div>
         <ul class="hero__metrics">
             @for (item of metrics(); track item.id) {
                 <li>
-                    <span class="hero__metric-icon" aria-hidden="true"></span>
+                    <span class="hero__metric-icon">
+                        <app-icon [name]="item.icon" />
+                    </span>
                     <div>
                         <strong>{{ item.title }}</strong>
                         <span>{{ item.subtitle }}</span>
@@ -34,18 +40,21 @@
     </div>
 
     <div class="hero__visual">
-        <img
-            class="hero__brain"
-            src="assets/images/brain-logo.png"
-            alt=""
-            aria-hidden="true"
-        />
-        <img
-            class="hero__photo"
-            src="assets/images/alina-hero.jpg"
-            alt="Алина с iPad"
-            loading="eager"
-            decoding="async"
-        />
+        <div class="hero__photo-stage">
+            <img
+                class="hero__brain"
+                src="assets/images/brain-logo.png"
+                alt=""
+                aria-hidden="true"
+            />
+            <div class="hero__blur" aria-hidden="true"></div>
+            <img
+                class="hero__photo"
+                src="assets/images/alina-hero.jpg"
+                alt="Алина с iPad"
+                loading="eager"
+                decoding="async"
+            />
+        </div>
     </div>
 </section>

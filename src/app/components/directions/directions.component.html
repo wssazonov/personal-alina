@@ -4,7 +4,9 @@
         @for (direction of directions(); track direction.id) {
             <article class="card card--hoverable">
                 <h3>
-                    <span class="directions__icon">{{ direction.icon }}</span>
+                    <span class="directions__icon">
+                        <app-icon [name]="direction.icon" />
+                    </span>
                     {{ direction.title }}
                 </h3>
                 <ul>

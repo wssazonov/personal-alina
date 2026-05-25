@@ -2,6 +2,7 @@ export interface Metric {
     id: number;
     title: string;
     subtitle: string;
+    icon: string;
 }
 
 export interface Benefit {

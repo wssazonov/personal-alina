@@ -70,10 +70,12 @@
     }
 
     &__metric-icon {
+        display: grid;
         width: 1.7rem;
         height: 1.7rem;
-        border-radius: 50%;
-        border: 2px solid #ad8bea;
+        place-items: center;
+        color: #9f78dc;
+        font-size: 1.7rem;
         flex-shrink: 0;
     }
 }

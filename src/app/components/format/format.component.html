@@ -4,7 +4,9 @@
         @for (item of formats(); track item.id; let isLast = $last) {
             <article class="format__item">
                 <div class="format__icon-wrap">
-                    <span class="format__icon">{{ item.icon }}</span>
+                    <span class="format__icon">
+                        <app-icon [name]="item.icon" />
+                    </span>
                     @if (!isLast) {
                         <span class="format__line" aria-hidden="true"></span>
                     }

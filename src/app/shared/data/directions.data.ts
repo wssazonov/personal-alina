@@ -4,7 +4,7 @@ export const DIRECTIONS: readonly Direction[] = [
     {
         id: 1,
         title: 'Математика (профиль)',
-        icon: '√x',
+        icon: 'square-root',
         points: [
             'Все темы с нуля до уверенного уровня',
             'Подготовка ко второй части',
@@ -15,7 +15,7 @@ export const DIRECTIONS: readonly Direction[] = [
     {
         id: 2,
         title: 'Информатика',
-        icon: '</>',
+        icon: 'code',
         points: [
             'Программирование Python',
             'Алгоритмы и логика',

@@ -24,9 +24,14 @@
 
     &__icon {
         display: inline-flex;
+        width: 2.6rem;
+        height: 2.6rem;
+        align-items: center;
+        justify-content: center;
         margin-right: 0.45rem;
         font-weight: 700;
         color: #a483e9;
+        font-size: 2.5rem;
     }
 
     .card:last-child &__icon {

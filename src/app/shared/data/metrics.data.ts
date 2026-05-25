@@ -5,16 +5,19 @@ export const HERO_METRICS: readonly Metric[] = [
         id: 1,
         title: '9 лет',
         subtitle: 'преподавания',
+        icon: 'graduation-cap',
     },
     {
         id: 2,
         title: '100 баллов',
         subtitle: 'на ЕГЭ',
+        icon: 'hundred',
     },
     {
         id: 3,
         title: 'Индивидуальный',
         subtitle: 'подход',
+        icon: 'user-round',
     },
 ] as const;
 
@@ -23,16 +26,19 @@ export const ABOUT_METRICS: readonly Metric[] = [
         id: 1,
         title: 'Преподаю',
         subtitle: '9 лет',
+        icon: 'graduation-cap',
     },
     {
         id: 2,
         title: 'Сдаю ЕГЭ',
         subtitle: 'ежегодно',
+        icon: 'calendar',
     },
     {
         id: 3,
         title: '100 баллов',
         subtitle: 'на ЕГЭ',
+        icon: 'hundred',
     },
 ] as const;
 

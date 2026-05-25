@@ -22,7 +22,9 @@
             <ul class="about__metrics">
                 @for (item of metrics(); track item.id) {
                     <li>
-                        <span class="about__metric-icon" aria-hidden="true"></span>
+                        <span class="about__metric-icon">
+                            <app-icon [name]="item.icon" />
+                        </span>
                         <div>
                             <strong>{{ item.title }}</strong>
                             <span>{{ item.subtitle }}</span>

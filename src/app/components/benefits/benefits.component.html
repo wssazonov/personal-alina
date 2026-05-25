@@ -4,7 +4,7 @@
         @for (item of items(); track item.id) {
             <article class="card card--hoverable benefits__item">
                 <span class="benefits__icon" [class.benefits__icon--peach]="item.id % 2 === 0">
-                    {{ item.icon }}
+                    <app-icon [name]="item.icon" />
                 </span>
                 <h3>{{ item.title }}</h3>
                 <p>{{ item.description }}</p>
