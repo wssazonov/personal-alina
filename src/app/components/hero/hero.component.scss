@@ -84,9 +84,7 @@
 
     &__brain {
         position: absolute;
-        right: -4rem;
-        top: 3.5rem;
-        width: 34rem;
+        width: 50rem;
         opacity: 0.16;
         pointer-events: none;
     }
@@ -155,6 +153,9 @@
         &__metrics {
             flex-direction: column;
             gap: 0.75rem;
+        }
+        &__brain {
+            width: 25rem;
         }
     }
 }
