@@ -1,0 +1,12 @@
+<div class="floating-actions" aria-label="Быстрые контакты">
+    @for (action of actions; track action.id) {
+        <a
+            class="floating-actions__link"
+            [href]="action.url"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            {{ action.label }}
+        </a>
+    }
+</div>

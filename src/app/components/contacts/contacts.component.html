@@ -1,0 +1,61 @@
+<section class="contacts container" appRevealOnScroll>
+    <div class="contacts__card">
+        <div class="contacts__icon-wrap">
+            <img
+                src="assets/images/brain-logo.png"
+                alt="Логотип"
+                class="contacts__icon"
+            />
+        </div>
+
+        <div class="contacts__content">
+            <h2>Готов(а) начать подготовку к ЕГЭ уже сейчас?</h2>
+            <p>
+                Напиши мне — отвечу на все вопросы и подберем удобное время для
+                старта.
+            </p>
+            <div class="contacts__actions">
+                <a
+                    class="button button--primary"
+                    href="https://t.me/AlinaAkishina"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Написать в Telegram
+                </a>
+                <a
+                    class="button button--ghost"
+                    href="https://wa.me/79819505805"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Написать в WhatsApp
+                </a>
+                <a
+                    class="button button--ghost"
+                    href="tel:+79819505805"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Позвонить
+                </a>
+            </div>
+            <dl class="contacts__list">
+                @for (item of links(); track item.id) {
+                    <div>
+                        <dt>{{ item.title }}:</dt>
+                        <dd>
+                            <a
+                                [href]="item.url"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                {{ item.value }}
+                            </a>
+                        </dd>
+                    </div>
+                }
+            </dl>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,12 @@
+<section class="format container" appRevealOnScroll>
+    <h2 class="section-title">Формат занятий</h2>
+    <div class="format__grid">
+        @for (item of formats(); track item.id) {
+            <article class="card card--hoverable">
+                <span class="format__icon">{{ item.icon }}</span>
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.description }}</p>
+            </article>
+        }
+    </div>
+</section>

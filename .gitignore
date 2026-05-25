@@ -1,0 +1,43 @@
+# запрещённые файлы
+package-lock.json
+
+# Yarn и зависимости
+node_modules
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# локальные файлы окружения
+src/environments/ts/environment.local.json
+src/environments/ts/environment.local.ts
+src/environments/scss/local/environment.scss
+
+# локальные файлы сборки приложения
+dist
+
+# локальные файлы сборки мобильного приложения
+android
+ios
+resources
+capacitor.config.ts
+coverage
+
+# Кэш, логи и временные файлы
+.angular
+.eslintcache
+temp
+tmp
+.tmp
+npm-debug.log
+yarn-error.log
+tsconfig.cli.json
+.sonda
+
+# IDE и редакторы
+.vscode
+.idea
+.codex

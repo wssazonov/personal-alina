@@ -1,0 +1,64 @@
+import type { ContactLink, Metric } from '../models/landing.models';
+
+export const HERO_METRICS: readonly Metric[] = [
+    {
+        id: 1,
+        title: '9 лет',
+        subtitle: 'преподавания',
+    },
+    {
+        id: 2,
+        title: '100 баллов',
+        subtitle: 'на ЕГЭ',
+    },
+    {
+        id: 3,
+        title: 'Индивидуальный',
+        subtitle: 'подход',
+    },
+] as const;
+
+export const ABOUT_METRICS: readonly Metric[] = [
+    {
+        id: 1,
+        title: 'Преподаю',
+        subtitle: '9 лет',
+    },
+    {
+        id: 2,
+        title: 'Сдаю ЕГЭ',
+        subtitle: 'ежегодно',
+    },
+    {
+        id: 3,
+        title: '100 баллов',
+        subtitle: 'на ЕГЭ',
+    },
+] as const;
+
+export const CONTACT_LINKS: readonly ContactLink[] = [
+    {
+        id: 1,
+        title: 'Telegram',
+        value: '@AlinaAkishina',
+        url: 'https://t.me/AlinaAkishina',
+    },
+    {
+        id: 2,
+        title: 'Telegram канал',
+        value: '@alinamath_info',
+        url: 'https://t.me/alinamath_info',
+    },
+    {
+        id: 3,
+        title: 'VK группа',
+        value: 'egena100withalina',
+        url: 'https://vk.ru/egena100withalina',
+    },
+    {
+        id: 4,
+        title: 'VK',
+        value: 'id737631925',
+        url: 'https://vk.ru/id737631925',
+    },
+] as const;

@@ -1,0 +1,121 @@
+.hero {
+    display: grid;
+    grid-template-columns: 1fr minmax(18rem, 31rem);
+    gap: 2rem;
+    padding-top: 1.6rem;
+    align-items: end;
+
+    h1 {
+        margin: 0;
+        font-size: clamp(2.2rem, 5vw, 4rem);
+        line-height: 1.07;
+        letter-spacing: -0.03em;
+
+        span {
+            color: var(--accent-strong);
+        }
+    }
+
+    p {
+        margin: 1.35rem 0 0;
+        max-width: 36ch;
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        line-height: 1.66;
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 1.6rem;
+    }
+
+    &__metrics {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.95rem;
+        margin: 1.65rem 0 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            border-radius: 1rem;
+            background: #fff;
+            padding: 1rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        strong {
+            display: block;
+            font-size: 1rem;
+            line-height: 1.25;
+        }
+
+        span {
+            display: block;
+            margin-top: 0.25rem;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
+    }
+
+    &__visual {
+        position: relative;
+        min-height: 25rem;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    &__brain {
+        position: absolute;
+        inset: 10% -8% auto auto;
+        width: 80%;
+        opacity: 0.24;
+        pointer-events: none;
+    }
+
+    &__photo {
+        position: relative;
+        width: min(100%, 30rem);
+        border-radius: 1.5rem;
+        object-fit: cover;
+        box-shadow: 0 28px 48px rgba(45, 34, 74, 0.18);
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero {
+        grid-template-columns: 1fr;
+
+        &__visual {
+            order: 2;
+            min-height: 0;
+        }
+
+        &__content {
+            order: 1;
+        }
+
+        &__metrics {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .hero {
+        &__actions {
+            flex-direction: column;
+
+            .button {
+                width: 100%;
+            }
+        }
+
+        &__metrics {
+            grid-template-columns: 1fr;
+        }
+    }
+}

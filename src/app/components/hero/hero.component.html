@@ -1,0 +1,48 @@
+<section class="hero container" appRevealOnScroll>
+    <div class="hero__content">
+        <h1>
+            Подготовка к ЕГЭ<br />
+            по <span>математике</span><br />
+            и <span>информатике</span>
+        </h1>
+        <p>
+            Системная подготовка с понятной теорией, практикой и поддержкой на
+            каждом этапе пути к высоким баллам.
+        </p>
+        <div class="hero__actions">
+            <a
+                class="button button--primary"
+                href="https://t.me/AlinaAkishina"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Написать в Telegram
+            </a>
+            <a class="button button--ghost" href="#about">Подробнее обо мне</a>
+        </div>
+        <ul class="hero__metrics">
+            @for (item of metrics(); track item.id) {
+                <li>
+                    <strong>{{ item.title }}</strong>
+                    <span>{{ item.subtitle }}</span>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <div class="hero__visual">
+        <img
+            class="hero__brain"
+            src="assets/images/brain-logo.png"
+            alt=""
+            aria-hidden="true"
+        />
+        <img
+            class="hero__photo"
+            src="assets/images/alina-hero.jpg"
+            alt="Алина с iPad"
+            loading="eager"
+            decoding="async"
+        />
+    </div>
+</section>

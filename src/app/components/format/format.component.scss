@@ -1,0 +1,43 @@
+.format {
+    padding-top: 4.2rem;
+
+    &__grid {
+        margin-top: 1.5rem;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    &__icon {
+        color: var(--accent-strong);
+        font-size: 1.65rem;
+        font-weight: 700;
+    }
+
+    h3 {
+        margin: 0.85rem 0 0;
+        font-size: 1.15rem;
+    }
+
+    p {
+        margin: 0.6rem 0 0;
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+}
+
+@media (max-width: 1024px) {
+    .format {
+        &__grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .format {
+        &__grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}
