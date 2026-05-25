@@ -152,9 +152,9 @@
         }
 
         &__metrics {
-            flex-direction: column;
-            gap: 0.75rem;
+            display: none;
         }
+
         &__brain {
             width: 25rem;
         }
