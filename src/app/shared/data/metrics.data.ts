@@ -79,4 +79,16 @@ export const CONTACT_LINKS: readonly ContactLink[] = [
         value: 'id737631925',
         url: 'https://vk.ru/id737631925',
     },
+    {
+        id: 7,
+        title: 'TikTok',
+        value: '@alinamath.info',
+        url: 'https://www.tiktok.com/@alinamath.info',
+    },
+    {
+        id: 8,
+        title: 'YouTube',
+        value: '@alinamath_info',
+        url: 'https://www.youtube.com/@alinamath_info',
+    },
 ] as const;
