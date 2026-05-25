@@ -51,18 +51,30 @@ export const CONTACT_LINKS: readonly ContactLink[] = [
     },
     {
         id: 2,
+        title: 'WhatsApp',
+        value: '+7 981 950-58-05',
+        url: 'https://wa.me/79819505805',
+    },
+    {
+        id: 3,
+        title: 'Телефон',
+        value: '+7 981 950-58-05',
+        url: 'tel:+79819505805',
+    },
+    {
+        id: 4,
         title: 'Telegram канал',
         value: '@alinamath_info',
         url: 'https://t.me/alinamath_info',
     },
     {
-        id: 3,
+        id: 5,
         title: 'VK группа',
         value: 'egena100withalina',
         url: 'https://vk.ru/egena100withalina',
     },
     {
-        id: 4,
+        id: 6,
         title: 'VK',
         value: 'id737631925',
         url: 'https://vk.ru/id737631925',

@@ -27,13 +27,35 @@
                 <app-icon name="send" />
             </a>
             <a
-                class="contacts__channel"
-                href="https://t.me/alinamath_info"
+                class="button button--ghost"
+                href="https://wa.me/79819505805"
                 target="_blank"
                 rel="noopener noreferrer"
             >
-                @alinamath_info
+                Написать в WhatsApp
             </a>
+            <a
+                class="contacts__phone"
+                href="tel:+79819505805"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                Позвонить
+            </a>
+        </div>
+
+        <div class="contacts__links" aria-label="Контакты Алины">
+            @for (link of links(); track link.id) {
+                <a
+                    class="contacts__link"
+                    [href]="link.url"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <span>{{ link.title }}</span>
+                    <strong>{{ link.value }}</strong>
+                </a>
+            }
         </div>
     </div>
 </section>
