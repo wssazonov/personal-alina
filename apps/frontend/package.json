@@ -10,6 +10,7 @@
         "config:runtime": "node scripts/write-runtime-config.mjs",
         "start": "npm run config:runtime && ng serve",
         "build": "npm run config:runtime && ng build",
+        "build:frontend": "npm run build",
         "watch": "ng build --watch --configuration development",
         "lint": "eslint . --cache --cache-location .eslintcache --cache-strategy content",
         "lint:fix": "npm run lint -- --fix"

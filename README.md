@@ -153,8 +153,8 @@ https://<backend>.up.railway.app/api/health
 ### 3. Разместить Frontend В Vercel
 
 1. Импортируйте тот же GitHub-репозиторий в Vercel.
-2. Оставьте Root Directory пустым: сборка запускается из корня monorepo.
-3. Конфигурация из `vercel.json` выполнит `npm run build:frontend` и опубликует Angular-приложение.
+2. Для Root Directory можно оставить корень monorepo или выбрать `apps/frontend`: оба варианта поддерживаются.
+3. Конфигурация из `vercel.json` выполнит Angular-сборку и опубликует приложение.
 4. Добавьте Vercel Environment Variable:
 
 ```text
