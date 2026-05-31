@@ -5,8 +5,9 @@ const tseslint = require("typescript-eslint");
 module.exports = tseslint.config(
     {
         ignores: [
-            "dist/**",
-            ".angular/**",
+            "**/dist/**",
+            "**/.angular/**",
+            "**/generated/**",
             "coverage/**",
             "node_modules/**",
             "tmp/**",
@@ -18,15 +19,31 @@ module.exports = tseslint.config(
         extends: [
             js.configs.recommended,
             ...tseslint.configs.recommendedTypeChecked,
-            ...angular.configs.tsRecommended,
         ],
-        processor: angular.processInlineTemplates,
         languageOptions: {
             parserOptions: {
-                projectService: true,
+                projectService: {
+                    allowDefaultProject: ["prisma/*.ts", "prisma.config.ts"],
+                },
                 tsconfigRootDir: __dirname,
             },
         },
+        rules: {
+            "@typescript-eslint/no-unused-vars": [
+                "error",
+                {
+                    vars: "local",
+                    args: "none",
+                    ignoreRestSiblings: true,
+                },
+            ],
+            "prefer-template": "error",
+        },
+    },
+    {
+        files: ["apps/frontend/**/*.ts"],
+        extends: [...angular.configs.tsRecommended],
+        processor: angular.processInlineTemplates,
         rules: {
             "@angular-eslint/component-selector": [
                 "warn",
@@ -38,15 +55,15 @@ module.exports = tseslint.config(
             ],
             "@angular-eslint/prefer-on-push-component-change-detection": "warn",
             "@angular-eslint/prefer-standalone": "error",
-            "@typescript-eslint/no-unused-vars": [
-                "error",
-                {
-                    vars: "local",
-                    args: "none",
-                    ignoreRestSiblings: true,
-                },
-            ],
-            "prefer-template": "error",
+        },
+    },
+    {
+        files: [
+            "apps/frontend/src/app/pages/admin/**/*.ts",
+            "apps/frontend/src/app/pages/admin-login/**/*.ts",
+        ],
+        rules: {
+            "@typescript-eslint/unbound-method": "off",
         },
     },
     {

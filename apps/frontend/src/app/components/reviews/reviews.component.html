@@ -1,0 +1,46 @@
+<section class="reviews container" appRevealOnScroll>
+    <h2 class="section-title">Отзывы учеников</h2>
+
+    <app-content-slider
+        label="Отзывы учеников"
+        [enabled]="reviews().length > 3"
+        (pageChange)="activeIndex.set($event)"
+    >
+        <div class="reviews__grid slider-items">
+            @for (review of reviews(); track review.id) {
+                <article class="reviews__item card card--hoverable">
+                    <p>“{{ review.text }}”</p>
+                    <div class="reviews__author">
+                        <div>
+                            <strong>— {{ review.author }}, {{ review.grade }}</strong>
+                        </div>
+                        @if (review.imageUrl) {
+                            <img
+                                class="reviews__avatar"
+                                [src]="review.imageUrl"
+                                [alt]="review.author"
+                            />
+                        } @else {
+                            <span class="reviews__avatar">
+                                {{ getInitial(review.author) }}
+                            </span>
+                        }
+                    </div>
+                </article>
+            }
+        </div>
+    </app-content-slider>
+
+    @if (paginationDots().length > 1) {
+        <div class="reviews__dots">
+            @for (dot of paginationDots(); track dot) {
+                <button
+                    type="button"
+                    [class.is-active]="dot === activeIndex()"
+                    (click)="goTo(dot)"
+                    [attr.aria-label]="'Перейти к слайду ' + (dot + 1)"
+                ></button>
+            }
+        </div>
+    }
+</section>

@@ -1,0 +1,372 @@
+<main class="admin">
+    <header class="admin__header">
+        <div>
+            <p>Лендинг Алины</p>
+            <h1>Управление контентом</h1>
+        </div>
+        <div class="admin__header-actions">
+            <a href="/" target="_blank" rel="noopener noreferrer">Открыть сайт</a>
+            <button type="button" class="button button--ghost" (click)="logout()">
+                Выйти
+            </button>
+        </div>
+    </header>
+
+    <nav class="tabs" aria-label="Разделы админки">
+        @for (section of sections; track section.id) {
+            <button
+                type="button"
+                [class.is-active]="activeSection() === section.id"
+                (click)="setSection(section.id)"
+            >
+                {{ section.label }}
+            </button>
+        }
+    </nav>
+
+    @if (successMessage()) {
+        <p class="notice notice--success" role="status">{{ successMessage() }}</p>
+    }
+    @if (errorMessage()) {
+        <p class="notice notice--error" role="alert">{{ errorMessage() }}</p>
+    }
+
+    @if (isLoading()) {
+        <p class="loading">Загружаем данные…</p>
+    } @else {
+        @switch (activeSection()) {
+            @case ('about') {
+                <section class="panel">
+                    <div class="panel__heading">
+                        <div>
+                            <p class="eyebrow">Основной текст</p>
+                            <h2>Обо мне</h2>
+                        </div>
+                    </div>
+
+                    <form class="editor" [formGroup]="aboutForm" (ngSubmit)="saveAbout()">
+                        <label>
+                            <span>Заголовок *</span>
+                            <input type="text" formControlName="title" />
+                        </label>
+                        <label>
+                            <span>Текст *</span>
+                            <textarea rows="8" formControlName="text"></textarea>
+                        </label>
+
+                        <div class="subheading">
+                            <div>
+                                <h3>Факты</h3>
+                                <p>Короткие карточки под текстом блока.</p>
+                            </div>
+                            <button type="button" class="button button--soft" (click)="addFact()">
+                                Добавить факт
+                            </button>
+                        </div>
+
+                        <div class="nested-list" formArrayName="facts">
+                            @for (fact of aboutFacts.controls; track $index; let index = $index) {
+                                <article class="nested-card" [formGroupName]="index">
+                                    <div class="nested-card__grid">
+                                        <div class="field">
+                                            <span>Иконка *</span>
+                                            <app-icon-picker
+                                                formControlName="icon"
+                                                [options]="iconOptions"
+                                            />
+                                        </div>
+                                        <label>
+                                            <span>Заголовок *</span>
+                                            <input type="text" formControlName="title" />
+                                        </label>
+                                        <label>
+                                            <span>Текст *</span>
+                                            <input type="text" formControlName="text" />
+                                        </label>
+                                        <label>
+                                            <span>Порядок *</span>
+                                            <input type="number" formControlName="order" />
+                                        </label>
+                                    </div>
+                                    <div class="nested-card__footer">
+                                        <label class="switch">
+                                            <input type="checkbox" formControlName="isActive" />
+                                            <span>Активен</span>
+                                        </label>
+                                        <button
+                                            type="button"
+                                            class="link-button link-button--danger"
+                                            [disabled]="aboutFacts.length === 1"
+                                            (click)="removeFact(index)"
+                                        >
+                                            Удалить
+                                        </button>
+                                    </div>
+                                </article>
+                            }
+                        </div>
+
+                        <button class="button button--primary" type="submit">Сохранить блок</button>
+                    </form>
+                </section>
+            }
+
+            @case ('benefits') {
+                <section class="content-layout">
+                    <div class="panel">
+                        <div class="panel__heading">
+                            <div>
+                                <p class="eyebrow">Карточки лендинга</p>
+                                <h2>Преимущества</h2>
+                            </div>
+                            <button type="button" class="button button--soft" (click)="newBenefit()">
+                                Добавить
+                            </button>
+                        </div>
+
+                        <div class="item-list">
+                            @for (benefit of benefits(); track benefit.id) {
+                                <article class="item-card" [class.is-muted]="!benefit.isActive">
+                                    <div>
+                                        <span class="item-card__meta">№ {{ benefit.order }} · {{ benefit.icon }}</span>
+                                        <h3>{{ benefit.title }}</h3>
+                                        <p>{{ benefit.text }}</p>
+                                    </div>
+                                    <div class="item-card__actions">
+                                        <button type="button" class="link-button" (click)="toggleBenefit(benefit)">
+                                            {{ benefit.isActive ? 'Выключить' : 'Включить' }}
+                                        </button>
+                                        <button type="button" class="link-button" (click)="editBenefit(benefit)">
+                                            Редактировать
+                                        </button>
+                                        <button type="button" class="link-button link-button--danger" (click)="deleteBenefit(benefit)">
+                                            Удалить
+                                        </button>
+                                    </div>
+                                </article>
+                            } @empty {
+                                <p class="empty">Пока нет ни одного преимущества.</p>
+                            }
+                        </div>
+                    </div>
+
+                    <aside class="panel panel--editor">
+                        <h2>{{ editingBenefitId() ? 'Редактирование' : 'Новое преимущество' }}</h2>
+                        <form class="editor" [formGroup]="benefitForm" (ngSubmit)="saveBenefit()">
+                            <div class="field">
+                                <span>Иконка *</span>
+                                <app-icon-picker
+                                    formControlName="icon"
+                                    [options]="iconOptions"
+                                />
+                            </div>
+                            <label>
+                                <span>Заголовок *</span>
+                                <input type="text" formControlName="title" />
+                            </label>
+                            <label>
+                                <span>Текст *</span>
+                                <textarea rows="5" formControlName="text"></textarea>
+                            </label>
+                            <label>
+                                <span>Порядок *</span>
+                                <input type="number" formControlName="order" />
+                            </label>
+                            <label class="switch">
+                                <input type="checkbox" formControlName="isActive" />
+                                <span>Активен</span>
+                            </label>
+                            <button type="submit" class="button button--primary">Сохранить</button>
+                        </form>
+                    </aside>
+                </section>
+            }
+
+            @case ('directions') {
+                <section class="content-layout">
+                    <div class="panel">
+                        <div class="panel__heading">
+                            <div>
+                                <p class="eyebrow">Карточки лендинга</p>
+                                <h2>Направления</h2>
+                            </div>
+                            <button type="button" class="button button--soft" (click)="newDirection()">
+                                Добавить
+                            </button>
+                        </div>
+
+                        <div class="item-list">
+                            @for (direction of directions(); track direction.id) {
+                                <article class="item-card" [class.is-muted]="!direction.isActive">
+                                    <div>
+                                        <span class="item-card__meta">№ {{ direction.order }} · {{ direction.icon }}</span>
+                                        <h3>{{ direction.title }}</h3>
+                                        <ul>
+                                            @for (item of direction.items; track item.id ?? $index) {
+                                                <li [class.is-muted]="!item.isActive">{{ item.text }}</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="item-card__actions">
+                                        <button type="button" class="link-button" (click)="toggleDirection(direction)">
+                                            {{ direction.isActive ? 'Выключить' : 'Включить' }}
+                                        </button>
+                                        <button type="button" class="link-button" (click)="editDirection(direction)">
+                                            Редактировать
+                                        </button>
+                                        <button type="button" class="link-button link-button--danger" (click)="deleteDirection(direction)">
+                                            Удалить
+                                        </button>
+                                    </div>
+                                </article>
+                            } @empty {
+                                <p class="empty">Пока нет ни одного направления.</p>
+                            }
+                        </div>
+                    </div>
+
+                    <aside class="panel panel--editor">
+                        <h2>{{ editingDirectionId() ? 'Редактирование' : 'Новое направление' }}</h2>
+                        <form class="editor" [formGroup]="directionForm" (ngSubmit)="saveDirection()">
+                            <div class="field">
+                                <span>Иконка *</span>
+                                <app-icon-picker
+                                    formControlName="icon"
+                                    [options]="iconOptions"
+                                />
+                            </div>
+                            <label>
+                                <span>Заголовок *</span>
+                                <input type="text" formControlName="title" />
+                            </label>
+                            <label>
+                                <span>Порядок *</span>
+                                <input type="number" formControlName="order" />
+                            </label>
+                            <label class="switch">
+                                <input type="checkbox" formControlName="isActive" />
+                                <span>Активен</span>
+                            </label>
+
+                            <div class="subheading">
+                                <h3>Пункты направления</h3>
+                                <button type="button" class="button button--soft" (click)="addDirectionItem()">
+                                    Добавить пункт
+                                </button>
+                            </div>
+
+                            <div class="nested-list" formArrayName="items">
+                                @for (item of directionItems.controls; track $index; let index = $index) {
+                                    <article class="nested-card" [formGroupName]="index">
+                                        <label>
+                                            <span>Текст *</span>
+                                            <input type="text" formControlName="text" />
+                                        </label>
+                                        <label>
+                                            <span>Порядок *</span>
+                                            <input type="number" formControlName="order" />
+                                        </label>
+                                        <div class="nested-card__footer">
+                                            <label class="switch">
+                                                <input type="checkbox" formControlName="isActive" />
+                                                <span>Активен</span>
+                                            </label>
+                                            <button
+                                                type="button"
+                                                class="link-button link-button--danger"
+                                                [disabled]="directionItems.length === 1"
+                                                (click)="removeDirectionItem(index)"
+                                            >
+                                                Удалить
+                                            </button>
+                                        </div>
+                                    </article>
+                                }
+                            </div>
+                            <button type="submit" class="button button--primary">Сохранить</button>
+                        </form>
+                    </aside>
+                </section>
+            }
+
+            @case ('reviews') {
+                <section class="content-layout">
+                    <div class="panel">
+                        <div class="panel__heading">
+                            <div>
+                                <p class="eyebrow">Слайдер лендинга</p>
+                                <h2>Отзывы</h2>
+                            </div>
+                            <button type="button" class="button button--soft" (click)="newReview()">
+                                Добавить
+                            </button>
+                        </div>
+
+                        <div class="item-list">
+                            @for (review of reviews(); track review.id) {
+                                <article class="item-card" [class.is-muted]="!review.isActive">
+                                    <div>
+                                        <span class="item-card__meta">№ {{ review.order }} · {{ review.icon }}</span>
+                                        <h3>{{ review.studentName }}, {{ review.studentClass }}</h3>
+                                        <p>{{ review.text }}</p>
+                                    </div>
+                                    <div class="item-card__actions">
+                                        <button type="button" class="link-button" (click)="toggleReview(review)">
+                                            {{ review.isActive ? 'Выключить' : 'Включить' }}
+                                        </button>
+                                        <button type="button" class="link-button" (click)="editReview(review)">
+                                            Редактировать
+                                        </button>
+                                        <button type="button" class="link-button link-button--danger" (click)="deleteReview(review)">
+                                            Удалить
+                                        </button>
+                                    </div>
+                                </article>
+                            } @empty {
+                                <p class="empty">Пока нет ни одного отзыва.</p>
+                            }
+                        </div>
+                    </div>
+
+                    <aside class="panel panel--editor">
+                        <h2>{{ editingReviewId() ? 'Редактирование' : 'Новый отзыв' }}</h2>
+                        <form class="editor" [formGroup]="reviewForm" (ngSubmit)="saveReview()">
+                            <div class="field">
+                                <span>Иконка *</span>
+                                <app-icon-picker
+                                    formControlName="icon"
+                                    [options]="iconOptions"
+                                />
+                            </div>
+                            <label>
+                                <span>Текст отзыва *</span>
+                                <textarea rows="6" formControlName="text"></textarea>
+                            </label>
+                            <label>
+                                <span>Имя ученика *</span>
+                                <input type="text" formControlName="studentName" />
+                            </label>
+                            <label>
+                                <span>Класс *</span>
+                                <input type="text" formControlName="studentClass" />
+                            </label>
+                            <label>
+                                <span>Ссылка на фото</span>
+                                <input type="url" formControlName="imageUrl" placeholder="https://…" />
+                            </label>
+                            <label>
+                                <span>Порядок *</span>
+                                <input type="number" formControlName="order" />
+                            </label>
+                            <label class="switch">
+                                <input type="checkbox" formControlName="isActive" />
+                                <span>Активен</span>
+                            </label>
+                            <button type="submit" class="button button--primary">Сохранить</button>
+                        </form>
+                    </aside>
+                </section>
+            }
+        }
+    }
+</main>

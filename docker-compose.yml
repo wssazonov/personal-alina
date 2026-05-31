@@ -1,0 +1,55 @@
+services:
+    postgres:
+        image: postgres:17-alpine
+        restart: unless-stopped
+        environment:
+            POSTGRES_DB: alina_landing
+            POSTGRES_USER: alina_user
+            POSTGRES_PASSWORD: alina_password
+        ports:
+            - "5432:5432"
+        volumes:
+            - alina_postgres_data:/var/lib/postgresql/data
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U alina_user -d alina_landing"]
+            interval: 5s
+            timeout: 5s
+            retries: 10
+
+    backend:
+        build:
+            context: .
+            dockerfile: apps/backend/Dockerfile
+        restart: unless-stopped
+        environment:
+            DATABASE_URL: postgresql://alina_user:alina_password@postgres:5432/alina_landing?schema=public
+            JWT_SECRET: ${JWT_SECRET:-local-development-secret-change-me}
+            JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-8h}
+            PORT: 3000
+            FRONTEND_URLS: http://localhost:4200
+            ADMIN_LOGIN: ${ADMIN_LOGIN:-alinamath}
+            ADMIN_PASSWORD: ${ADMIN_PASSWORD:-Laima2010}
+        ports:
+            - "3000:3000"
+        dns:
+            - 8.8.8.8
+            - 8.8.4.4
+        depends_on:
+            postgres:
+                condition: service_healthy
+
+    frontend:
+        build:
+            context: .
+            dockerfile: apps/frontend/Dockerfile
+        restart: unless-stopped
+        ports:
+            - "4200:80"
+        dns:
+            - 8.8.8.8
+            - 8.8.4.4
+        depends_on:
+            - backend
+
+volumes:
+    alina_postgres_data:

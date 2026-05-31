@@ -1,0 +1,22 @@
+<section class="benefits container" appRevealOnScroll>
+    <h2 class="section-title">Что даёт подготовка со мной?</h2>
+    <app-content-slider
+        label="Преимущества подготовки"
+        [enabled]="items().length > 4"
+    >
+        <div class="benefits__grid slider-items">
+            @for (item of items(); track item.id; let index = $index) {
+                <article class="card card--hoverable benefits__item">
+                    <span
+                        class="benefits__icon"
+                        [class.benefits__icon--peach]="index % 2 === 1"
+                    >
+                        <app-icon [name]="item.icon" />
+                    </span>
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.description }}</p>
+                </article>
+            }
+        </div>
+    </app-content-slider>
+</section>

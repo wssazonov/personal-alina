@@ -1,0 +1,37 @@
+<div class="icon-picker">
+    <button
+        type="button"
+        class="icon-picker__trigger"
+        [disabled]="isDisabled()"
+        [attr.aria-expanded]="isOpen()"
+        aria-haspopup="listbox"
+        (click)="toggle()"
+        (blur)="markAsTouched()"
+    >
+        <span class="icon-picker__preview">
+            <app-icon [name]="previewIcon(selectedIcon())" />
+        </span>
+        <span>{{ selectedIcon() }}</span>
+        <span class="icon-picker__chevron" aria-hidden="true">⌄</span>
+    </button>
+
+    @if (isOpen()) {
+        <div class="icon-picker__options" role="listbox" aria-label="Доступные иконки">
+            @for (icon of options(); track icon) {
+                <button
+                    type="button"
+                    class="icon-picker__option"
+                    [class.is-selected]="selectedIcon() === icon"
+                    [attr.aria-selected]="selectedIcon() === icon"
+                    role="option"
+                    (click)="select(icon)"
+                >
+                    <span class="icon-picker__option-icon">
+                        <app-icon [name]="previewIcon(icon)" />
+                    </span>
+                    <span>{{ icon }}</span>
+                </button>
+            }
+        </div>
+    }
+</div>

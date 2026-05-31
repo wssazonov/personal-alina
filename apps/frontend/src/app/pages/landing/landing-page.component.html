@@ -1,0 +1,18 @@
+<div class="page-shell">
+    <app-header />
+    @if (isLoading()) {
+        <div class="content-loading" role="status" aria-label="Загрузка контента">
+            <span></span>
+        </div>
+    }
+    <main>
+        <app-hero />
+        <app-about />
+        <app-benefits />
+        <app-directions />
+        <app-format />
+        <app-reviews />
+        <app-contacts />
+    </main>
+    <app-footer />
+</div>

@@ -12,12 +12,16 @@ node_modules
 !.yarn/versions
 
 # локальные файлы окружения
+.env
+.env.*
+!.env.example
 src/environments/ts/environment.local.json
 src/environments/ts/environment.local.ts
 src/environments/scss/local/environment.scss
 
 # локальные файлы сборки приложения
 dist
+out-tsc
 
 # локальные файлы сборки мобильного приложения
 android
@@ -41,3 +45,6 @@ tsconfig.cli.json
 .vscode
 .idea
 .codex
+
+# Сгенерированный Prisma client
+apps/backend/src/generated

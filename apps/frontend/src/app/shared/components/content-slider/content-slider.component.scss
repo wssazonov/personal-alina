@@ -1,0 +1,42 @@
+.slider {
+    position: relative;
+
+    &__controls {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.45rem;
+        margin-bottom: 0.65rem;
+
+        button {
+            width: 2.35rem;
+            height: 2.35rem;
+            border: 1px solid rgba(164, 131, 233, 0.38);
+            border-radius: 50%;
+            background: #fff;
+            color: #8d6cda;
+            cursor: pointer;
+            font-size: 1.05rem;
+        }
+    }
+
+    &__viewport {
+        scrollbar-width: thin;
+    }
+
+    &--enabled &__viewport {
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        overscroll-behavior-x: contain;
+    }
+
+    &--enabled ::ng-deep .slider-items {
+        display: flex !important;
+        width: max-content;
+    }
+
+    &--enabled ::ng-deep .slider-items > * {
+        width: min(18rem, calc(100vw - 3.4rem));
+        scroll-snap-align: start;
+    }
+}

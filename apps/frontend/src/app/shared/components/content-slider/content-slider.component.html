@@ -1,0 +1,28 @@
+<div class="slider" [class.slider--enabled]="enabled()">
+    @if (enabled()) {
+        <div class="slider__controls">
+            <button
+                type="button"
+                aria-label="Прокрутить влево"
+                (click)="scroll(-1)"
+            >
+                ←
+            </button>
+            <button
+                type="button"
+                aria-label="Прокрутить вправо"
+                (click)="scroll(1)"
+            >
+                →
+            </button>
+        </div>
+    }
+    <div
+        #viewport
+        class="slider__viewport"
+        [attr.aria-label]="label()"
+        (scrollend)="syncPage()"
+    >
+        <ng-content />
+    </div>
+</div>

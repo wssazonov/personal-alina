@@ -1,0 +1,25 @@
+<section class="directions container" appRevealOnScroll>
+    <h2 class="section-title">Направления подготовки</h2>
+    <app-content-slider
+        label="Направления подготовки"
+        [enabled]="directions().length > 2"
+    >
+        <div class="directions__grid slider-items">
+            @for (direction of directions(); track direction.id) {
+                <article class="card card--hoverable">
+                    <h3>
+                        <span class="directions__icon">
+                            <app-icon [name]="direction.icon" />
+                        </span>
+                        {{ direction.title }}
+                    </h3>
+                    <ul>
+                        @for (point of direction.points; track point) {
+                            <li>{{ point }}</li>
+                        }
+                    </ul>
+                </article>
+            }
+        </div>
+    </app-content-slider>
+</section>
