@@ -34,7 +34,6 @@
         min-height: 10rem;
         display: grid;
         place-items: center;
-        gap: 0.85rem;
         padding: 2rem;
         border: 1px solid rgba(181, 165, 214, 0.26);
         border-radius: 1.5rem;
@@ -52,10 +51,6 @@
         animation: content-spinner 0.8s linear infinite;
     }
 
-    p {
-        margin: 0;
-        font-weight: 700;
-    }
 }
 
 @keyframes content-spinner {
