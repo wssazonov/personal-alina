@@ -15,6 +15,6 @@ export class AboutComponent {
     private readonly content = inject(ContentService);
     protected readonly about = this.content.about;
     protected readonly paragraphs = computed(() =>
-        this.about().text.split(/\n\s*\n/),
+        this.about()?.text.split(/\n\s*\n/) ?? [],
     );
 }

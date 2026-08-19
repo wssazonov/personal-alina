@@ -69,13 +69,14 @@ const FALLBACK_CONTENT: LandingContent = {
 @Injectable({ providedIn: 'root' })
 export class ContentService {
     private readonly http = inject(HttpClient);
-    private readonly state = signal<LandingContent>(FALLBACK_CONTENT);
+    private readonly state = signal<LandingContent | null>(null);
 
     public readonly isLoading = signal(true);
-    public readonly about = computed(() => this.state().about);
-    public readonly benefits = computed(() => this.state().benefits);
-    public readonly directions = computed(() => this.state().directions);
-    public readonly reviews = computed(() => this.state().reviews);
+    public readonly hasContent = computed(() => this.state() !== null);
+    public readonly about = computed(() => this.state()?.about ?? null);
+    public readonly benefits = computed(() => this.state()?.benefits ?? []);
+    public readonly directions = computed(() => this.state()?.directions ?? []);
+    public readonly reviews = computed(() => this.state()?.reviews ?? []);
 
     public constructor() {
         this.refresh();

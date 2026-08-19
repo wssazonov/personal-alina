@@ -32,4 +32,5 @@ export class LandingPageComponent {
     private readonly content = inject(ContentService);
 
     protected readonly isLoading = this.content.isLoading;
+    protected readonly hasContent = this.content.hasContent;
 }

@@ -33,9 +33,13 @@ export class AuthService {
     }
 
     public logout(): void {
+        this.clearSession();
+        void this.router.navigate(['/admin/login']);
+    }
+
+    public clearSession(): void {
         localStorage.removeItem(TOKEN_KEY);
         this.tokenState.set(null);
-        void this.router.navigate(['/admin/login']);
     }
 
     public isAuthenticated(): boolean {

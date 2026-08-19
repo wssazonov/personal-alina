@@ -8,13 +8,14 @@
                 decoding="async"
             />
         </div>
+        @if (about(); as aboutContent) {
         <div class="about__content">
-            <h2>{{ about().title }}</h2>
+            <h2>{{ aboutContent.title }}</h2>
             @for (paragraph of paragraphs(); track paragraph) {
                 <p>{{ paragraph }}</p>
             }
             <ul class="about__metrics">
-                @for (item of about().facts; track item.id) {
+                @for (item of aboutContent.facts; track item.id) {
                     <li>
                         <span class="about__metric-icon">
                             <app-icon [name]="item.icon" />
@@ -27,5 +28,6 @@
                 }
             </ul>
         </div>
+        }
     </div>
 </section>

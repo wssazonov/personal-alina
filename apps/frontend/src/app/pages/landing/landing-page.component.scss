@@ -26,3 +26,40 @@
         transform: translateX(350%);
     }
 }
+
+.content-placeholder {
+    padding-top: 2rem;
+
+    &__card {
+        min-height: 10rem;
+        display: grid;
+        place-items: center;
+        gap: 0.85rem;
+        padding: 2rem;
+        border: 1px solid rgba(181, 165, 214, 0.26);
+        border-radius: 1.5rem;
+        background: rgba(255, 255, 255, 0.72);
+        color: #655c70;
+        text-align: center;
+    }
+
+    span {
+        width: 2rem;
+        height: 2rem;
+        border: 3px solid rgba(164, 131, 233, 0.2);
+        border-top-color: #9f7de7;
+        border-radius: 50%;
+        animation: content-spinner 0.8s linear infinite;
+    }
+
+    p {
+        margin: 0;
+        font-weight: 700;
+    }
+}
+
+@keyframes content-spinner {
+    to {
+        transform: rotate(1turn);
+    }
+}
