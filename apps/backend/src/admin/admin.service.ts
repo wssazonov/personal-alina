@@ -123,6 +123,7 @@ export class AdminService {
             data: {
                 ...dto,
                 imageUrl: dto.imageUrl || null,
+                reviewImageUrl: dto.reviewImageUrl || null,
             },
         });
     }
@@ -134,6 +135,9 @@ export class AdminService {
                 ...dto,
                 ...(dto.imageUrl !== undefined
                     ? { imageUrl: dto.imageUrl || null }
+                    : {}),
+                ...(dto.reviewImageUrl !== undefined
+                    ? { reviewImageUrl: dto.reviewImageUrl || null }
                     : {}),
             },
         });

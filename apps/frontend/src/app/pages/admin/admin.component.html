@@ -309,6 +309,13 @@
                                         <span class="item-card__meta">№ {{ review.order }} · {{ review.icon }}</span>
                                         <h3>{{ review.studentName }}, {{ review.studentClass }}</h3>
                                         <p>{{ review.text }}</p>
+                                        @if (review.reviewImageUrl) {
+                                            <img
+                                                class="item-card__review-image"
+                                                [src]="review.reviewImageUrl"
+                                                [alt]="'Фото отзыва от ' + review.studentName"
+                                            />
+                                        }
                                     </div>
                                     <div class="item-card__actions">
                                         <button type="button" class="link-button" (click)="toggleReview(review)">
@@ -351,8 +358,12 @@
                                 <input type="text" formControlName="studentClass" />
                             </label>
                             <label>
-                                <span>Ссылка на фото</span>
+                                <span>Ссылка на фото ученика (аватар)</span>
                                 <input type="url" formControlName="imageUrl" placeholder="https://…" />
+                            </label>
+                            <label>
+                                <span>Ссылка на фото отзыва</span>
+                                <input type="url" formControlName="reviewImageUrl" placeholder="https://…" />
                             </label>
                             <label>
                                 <span>Порядок *</span>

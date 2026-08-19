@@ -170,6 +170,11 @@ export class CreateReviewDto extends OrderedActiveDto {
     @IsUrl()
     public imageUrl?: string;
 
+    @IsOptional()
+    @ValidateIf((_, value: unknown) => value !== '')
+    @IsUrl()
+    public reviewImageUrl?: string;
+
     @IsIn(ICON_VALUES)
     public icon!: string;
 }
@@ -194,6 +199,11 @@ export class UpdateReviewDto {
     @ValidateIf((_, value: unknown) => value !== '')
     @IsUrl()
     public imageUrl?: string;
+
+    @IsOptional()
+    @ValidateIf((_, value: unknown) => value !== '')
+    @IsUrl()
+    public reviewImageUrl?: string;
 
     @IsOptional()
     @IsIn(ICON_VALUES)

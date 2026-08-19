@@ -68,14 +68,15 @@ model DirectionItem {
 }
 
 model Review {
-  id           String   @id @default(uuid())
-  text         String
-  studentName  String
-  studentClass String
-  imageUrl     String?
-  icon         String
-  order        Int
-  isActive     Boolean  @default(true)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id             String   @id @default(uuid())
+  text           String
+  studentName    String
+  studentClass   String
+  imageUrl       String?
+  reviewImageUrl String?
+  icon           String
+  order          Int
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 }

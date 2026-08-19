@@ -37,6 +37,7 @@ interface ApiReview {
     studentName: string;
     studentClass: string;
     imageUrl?: string;
+    reviewImageUrl?: string;
     icon: string;
 }
 
@@ -127,6 +128,7 @@ export class ContentService {
                 author: review.studentName,
                 grade: review.studentClass,
                 imageUrl: review.imageUrl,
+                reviewImageUrl: review.reviewImageUrl,
                 icon: this.normalizeIcon(review.icon),
             })),
         };

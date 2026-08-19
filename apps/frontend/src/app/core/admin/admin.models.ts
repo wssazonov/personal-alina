@@ -45,6 +45,7 @@ export interface AdminReview {
     studentName: string;
     studentClass: string;
     imageUrl?: string;
+    reviewImageUrl?: string;
     icon: string;
     order: number;
     isActive: boolean;

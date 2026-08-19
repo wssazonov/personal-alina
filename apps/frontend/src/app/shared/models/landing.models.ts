@@ -32,6 +32,7 @@ export interface Review {
     author: string;
     grade: string;
     imageUrl?: string;
+    reviewImageUrl?: string;
     icon?: string;
 }
 

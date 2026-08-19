@@ -9,6 +9,22 @@
         <div class="reviews__grid slider-items">
             @for (review of reviews(); track review.id) {
                 <article class="reviews__item card card--hoverable">
+                    @if (review.reviewImageUrl) {
+                        <a
+                            class="reviews__proof"
+                            [href]="review.reviewImageUrl"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            [attr.aria-label]="'Открыть фото отзыва от ' + review.author"
+                        >
+                            <img
+                                [src]="review.reviewImageUrl"
+                                [alt]="'Фото отзыва от ' + review.author"
+                                loading="lazy"
+                                decoding="async"
+                            />
+                        </a>
+                    }
                     <p>“{{ review.text }}”</p>
                     <div class="reviews__author">
                         <div>

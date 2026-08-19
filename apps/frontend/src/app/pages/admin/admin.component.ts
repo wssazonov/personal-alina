@@ -94,6 +94,7 @@ export class AdminComponent implements OnInit {
         studentName: ['', Validators.required],
         studentClass: ['', Validators.required],
         imageUrl: [''],
+        reviewImageUrl: [''],
         order: [1, Validators.required],
         isActive: [true],
     });
@@ -315,6 +316,7 @@ export class AdminComponent implements OnInit {
             studentName: '',
             studentClass: '',
             imageUrl: '',
+            reviewImageUrl: '',
             order: this.reviews().length + 1,
             isActive: true,
         });
@@ -322,7 +324,11 @@ export class AdminComponent implements OnInit {
 
     protected editReview(review: AdminReview): void {
         this.editingReviewId.set(review.id);
-        this.reviewForm.reset({ ...review, imageUrl: review.imageUrl ?? '' });
+        this.reviewForm.reset({
+            ...review,
+            imageUrl: review.imageUrl ?? '',
+            reviewImageUrl: review.reviewImageUrl ?? '',
+        });
     }
 
     protected saveReview(): void {
@@ -483,6 +489,7 @@ export class AdminComponent implements OnInit {
             studentName: review.studentName,
             studentClass: review.studentClass,
             imageUrl: review.imageUrl ?? '',
+            reviewImageUrl: review.reviewImageUrl ?? '',
             order: review.order,
             isActive,
         };
